@@ -23,38 +23,83 @@ class MyApp extends StatelessWidget {
 
 class OnboardingScreen extends StatelessWidget {
   final List<String> _pages = [
-    "Welcome to Attendance App",
-    "Keep track of your attendance easily",
-    "View your attendance history anytime",
+    "Welcome to WNG Attendance App",
     "Let's get started!"
   ];
   final PageController _pageController = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Container(
+        decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage("assets/background_Image.jpeg"),
+    fit: BoxFit.cover,
+    ),
+    ),
+    child:Scaffold(
+      backgroundColor: Colors.transparent,
       body: Stack(
         children: [
           PageView.builder(
             controller: _pageController,
             itemCount: _pages.length,
             itemBuilder: (BuildContext context, int index) {
-              return Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    'assets/attendence.jpg',
-                    width: 200.0,
-                    height: 200.0,
-                  ),
-                  SizedBox(height: 32.0),
-                  Text(
-                    _pages[index],
-                    style: TextStyle(fontSize: 24.0),
-                    textAlign: TextAlign.center,
-                  ),
-                ],
-              );
+              if (index == 0) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "We Need Go",
+                      style: TextStyle(
+                        fontSize: 34.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Helvetica", // replace with your desired font family
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    Image.asset(
+                      'assets/attendence.jpg',
+                      width: 300.0,
+                      height: 300.0,
+                    ),
+                    SizedBox(height: 32.0),
+                    Text(
+                      _pages[index],
+                      style: TextStyle(fontSize: 24.0),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                );
+              } else if (index == 1) {
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "We Need Go",
+                      style: TextStyle(
+                        fontSize: 34.0,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: "Helvetica", // replace with your desired font family
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                    Image.asset(
+                      'assets/trackRecord.jpeg',
+                      width: 300.0,
+                      height: 300.0,
+                    ),
+                    SizedBox(height: 32.0),
+                    Text(
+                      _pages[index],
+                      style: TextStyle(fontSize: 24.0),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                );
+              } else {
+                return Container(); // return an empty container for any other index
+              }
             },
           ),
           Align(
@@ -68,6 +113,13 @@ class OnboardingScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => AttendancePage()),
                   );
                 },
+                style: ButtonStyle(
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0), // Set a larger radius value here
+                    ),
+                  ),
+                ),
                 child: Text(
                   "Get Started",
                   style: TextStyle(fontSize: 20.0),
@@ -77,6 +129,7 @@ class OnboardingScreen extends StatelessWidget {
           ),
         ],
       ),
+    ),
     );
   }
 }

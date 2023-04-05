@@ -63,6 +63,10 @@ flutter:
   uses-material-design: true
   assets:
     - assets/attendence.jpg
+    - assets/trackRecord.jpeg
+    - assets/background_Image.jpeg
+    - assets/attendence.png
+    - assets/trackRecord.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:
